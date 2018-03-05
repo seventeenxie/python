@@ -4,6 +4,7 @@ from django.db.models import Q
 
 
 def table_filter(request, admin_class):
+    print("-%s" % admin_class.ordering if admin_class.ordering else  "-id")
     '''进行条件过滤并返回过滤后的数据'''
     filter_conditions = {}
     keywords = ['page', 'o', '_q']
@@ -12,8 +13,6 @@ def table_filter(request, admin_class):
             continue
         if v:
             filter_conditions[k] = v
-    print("filter coditions", filter_conditions)
-
     return admin_class.model.objects.filter(**filter_conditions). \
                order_by("-%s" % admin_class.ordering if admin_class.ordering else  "-id"), \
            filter_conditions
