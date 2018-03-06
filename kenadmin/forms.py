@@ -11,8 +11,6 @@ class CustomerModelForm(ModelForm):
         fields = "__all__"
 
 
-
-
 def create_model_form(request,admin_class):
     '''动态生成MODEL FORM'''
     def __new__(cls, *args, **kwargs):
