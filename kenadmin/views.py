@@ -32,7 +32,6 @@ def display_table_objs(request, app_name, table_name):
     except EmptyPage:
         # If page is out of range (e.g. 9999), deliver last page of results.
         query_sets = paginator.page(paginator.num_pages)
-
     return render(request, "kenadmin/table_objs.html", {"admin_class": admin_class,
                                                         "query_sets": query_sets,
                                                         "filter_condtions": filter_condtions,
@@ -52,11 +51,12 @@ def table_obj_add(request,app_name,table_name):
     else:
         form_obj = model_form_class()
 
-    return render(request, "king_admin/table_obj_add.html", {"form_obj": form_obj,
+    return render(request, "kenadmin/table_obj_add.html", {"form_obj": form_obj,
                                                              "admin_class": admin_class})
 
 def display_test(request):
     from learn.crm import models
+    objectlist=models.Customer.objects.order_by("-id")
     objectlist=models.Customer.objects.order_by("-id")
 
     return  HttpResponse("ok");

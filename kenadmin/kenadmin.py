@@ -17,7 +17,7 @@ class CustomerAdmin(BaseAdmin):
     search_fields = ['qq', 'name', "consultant__name"]
 
     # model = models.Customer
-    list_per_page = 5
+    list_per_page = 1
     ordering = "qq"
 
 
